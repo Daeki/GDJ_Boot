@@ -31,10 +31,16 @@
   		LIMIT #{startIndex}, #{perPage}
   	</select>
   	
-  	<insert id="add" parameterType="BoardVO">
+  	<insert id="add" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boardNum">
   		INSERT INTO NOTICE 
   		(BOARDWRITER, BOARDTITLE, BOARDCONTENTS, BOARDDATE, BOARDHIT)
   		VALUES
   		(#{boardWriter}, #{boardTitle}, #{boardContents}, now(), 0)
   	</insert>
+  	
+  	<insert id="addFile" parameterType="FileVO">
+  		INSERT INTO NOTICEFILES
+  		VALUES (null, #{boardNum}, #{fileName}, #{oriName})
+  	</insert>
+  	
   </mapper>

@@ -50,8 +50,8 @@
 
                     <!-- Content Row -->
                     <div class="row justify-content-md-center">
-                    	<div class="col-6">
-                    	<form action="" method="post">
+                    	<div class="col-md-6">
+                    	<form action="" method="post" enctype="multipart/form-data">
                     		<div class="mb-3">
 							  <label for="title" class="form-label">제목</label>
 							  <input type="text" class="form-control" id="title" name="boardTitle">
@@ -66,6 +66,12 @@
 							  <label for="contents" class="form-label">내용</label>
 							  <textarea class="form-control" id="contents" name="boardContents" rows="3"></textarea>
 							</div>
+
+                            <div class="mb-3">
+                                <input type="file" name="attach">
+                                <input type="file" name="attach">
+                                <input type="file" name="attach">
+                            </div>
 							
 							<div class="mb-3">
 								<button class="btn btn-danger">작성</button>
