@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>${board} List</title>
+    <title></title>
 
 	<c:import url="../temp/css.jsp"></c:import>
 
@@ -43,66 +43,37 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">${board}</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-                    <!-- Content Row 실제 페이지 내용-->
-                    <div class="row">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Title</th>
-                                    <th>Writer</th>
-                                    <th>Date</th>
-                                    <th>Hit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${list}" var="vo">
-                            	<tr>
-                            		<td>${vo.boardNum}</td>
-                            		<td>${vo.boardTitle}</td>
-                            		<td>${vo.boardWriter}</td>
-                            		<td>${vo.boardDate}</td>
-                            		<td>${vo.boardHit}</td>
-                            	</tr>
-                            </c:forEach>
-
-                            </tbody>
-                            
-
-                        </table>
+                    <!-- Content Row -->
+                    <div class="row justify-content-md-center">
+                    	<div class="col-6">
+                    	<form action="" method="post">
+                    		<div class="mb-3">
+							  <label for="title" class="form-label">제목</label>
+							  <input type="text" class="form-control" id="title" name="boardTitle">
+							</div>
+							
+							<div class="mb-3">
+							  <label for="writer" class="form-label">작성자</label>
+							  <input type="text" class="form-control" id="writer" name="boardWriter">
+							</div>
+							
+							<div class="mb-3">
+							  <label for="contents" class="form-label">내용</label>
+							  <textarea class="form-control" id="contents" name="boardContents" rows="3"></textarea>
+							</div>
+							
+							<div class="mb-3">
+								<button class="btn btn-danger">작성</button>
+							</div>
+                    	
+                    	</form>
+						</div>
                     </div>
-
-                    <div class="row">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item">
-                                <a class="page-link" href="./list?page=${pager.startNum-1}&kind=${kind}&search=${search}" aria-label="Previous">
-                                  <span aria-hidden="true">&laquo;</span>
-                                </a>
-                              </li>
-                              
-                              <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-                              <li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${kind}&search=${search}">${i}</a></li>
-                              </c:forEach>
- 
-                              <li class="page-item">
-                                <a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${kind}&search=${search}" aria-label="Next">
-                                  <span aria-hidden="true">&raquo;</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </nav>
-
-                          <div>
-                            <a href="add" class="btn btn-primary">글쓰기</a>
-                          </div>
-                    </div>
-
 
                 </div>
                 <!-- /.container-fluid -->
