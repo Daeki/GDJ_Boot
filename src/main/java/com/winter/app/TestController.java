@@ -18,6 +18,7 @@ public class TestController {
 		log.info("info message");
 		log.debug("Debug message");
 		log.trace("Trace Message");
+		
 		return "index";
 	}
 
