@@ -56,6 +56,12 @@ public class NoticeService implements BoardService {
 		return result;
 	}
 	
+	@Override
+	public BoardVO getDetail(BoardVO boardVO) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeDAO.getDetail(boardVO);
+	}
+	
 	
 
 }
