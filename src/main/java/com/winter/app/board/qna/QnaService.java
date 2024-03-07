@@ -1,4 +1,4 @@
-package com.winter.app.board.notice;
+package com.winter.app.board.qna;
 
 import java.util.List;
 
@@ -18,11 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class NoticeService implements BoardService {
+public class QnaService implements BoardService {
 	
 	@Autowired
-	private NoticeDAO noticeDAO;
-	@Value("${app.upload.board.notice}")
+	private QnaDAO qnaDAO;
+	@Value("${app.upload.board.qna}")
 	private String uploadPath;
 	@Autowired
 	private FileManager fileManager;
@@ -30,14 +30,14 @@ public class NoticeService implements BoardService {
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
 		pager.makeIndex();
-		pager.makeNum(noticeDAO.getTotalCount(pager));
+		pager.makeNum(qnaDAO.getTotalCount(pager));
 		
-		return noticeDAO.getList(pager);
+		return qnaDAO.getList(pager);
 	}
 
 	@Override
 	public int add(BoardVO boardVO, MultipartFile [] attach) throws Exception {
-		int result = noticeDAO.add(boardVO);
+		int result = qnaDAO.add(boardVO);
 		
 		for(MultipartFile multipartFile:attach) {
 			if(multipartFile.isEmpty()) {
@@ -50,7 +50,7 @@ public class NoticeService implements BoardService {
 			fileVO.setFileName(fileName);
 			fileVO.setOriName(multipartFile.getOriginalFilename());
 			
-			result = noticeDAO.addFile(fileVO);
+			result = qnaDAO.addFile(fileVO);
 		}
 		
 		return result;
@@ -59,13 +59,7 @@ public class NoticeService implements BoardService {
 	@Override
 	public BoardVO getDetail(BoardVO boardVO) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.getDetail(boardVO);
-	}
-	
-	@Override
-	public FileVO getFileDetail(FileVO fileVO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.getFileDetail(fileVO);
+		return qnaDAO.getDetail(boardVO);
 	}
 	
 	

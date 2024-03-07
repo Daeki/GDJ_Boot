@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 //***-context.xml
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+//***-context.xml
 @Configuration
 public class FileMapping implements WebMvcConfigurer {
 	@Value("${app.upload.url}")

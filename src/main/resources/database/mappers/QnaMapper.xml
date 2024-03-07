@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.winter.app.board.notice.NoticeDAO">
+  <mapper namespace="com.winter.app.board.qna.QnaDAO">
   	<sql id="search">
   		<where>
   		<choose>
@@ -21,9 +21,9 @@
   		
   	</select>
   	
-  	<select id="getList" resultType="NoticeVO" parameterType="Pager">
+  	<select id="getList" resultType="QnaVO" parameterType="Pager">
   		
-  		SELECT * FROM NOTICE 
+  		SELECT * FROM QNA 
   		
   		<include refid="search"></include>
   		
@@ -33,20 +33,23 @@
   	
   	<select id="getDetail" parameterType="BoardVO" resultMap="getDetailResult">
   		SELECT *
-  		FROM NOTICE N
+  		FROM QNA Q
   			 LEFT JOIn
-  			 NOTICEFILES NF
+  			 QNAFILES QF
   			 USING(BOARDNUM)
   		WHERE BOARDNUM=#{boardNum}
   	</select>
   	
-  	<resultMap type="NoticeVO" id="getDetailResult">
+  	<resultMap type="QnaVO" id="getDetailResult">
   		<id column="BOARDNUM" property="boardNum"/>
   		<result column="BOARDTITLE" property="boardTitle"/>
   		<result column="BOARDWRITER" property="boardWriter"/>
   		<result column="BOARDCONTENTS" property="boardContents"/>
   		<result column="BOARDDATE" property="boardDate"/>
   		<result column="BOARDHIT" property="boardHit"/>
+  		<result column="BOARDREF" property="boardRef"/>
+  		<result column="BOARDSTEP" property="boardStep"/>
+  		<result column="BOARDDEPTH" property="boardDepth"/>
   		<collection property="fileVOs" javaType="List" ofType="FileVO">
   			<id column="FILENUM" property="fileNum"/>
   			<result column="FILENAME" property="fileName"/>
@@ -56,18 +59,14 @@
   	
   	<insert id="add" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boardNum">
   		INSERT INTO NOTICE 
-  		(BOARDWRITER, BOARDTITLE, BOARDCONTENTS, BOARDDATE, BOARDHIT)
+  		(BOARDWRITER, BOARDTITLE, BOARDCONTENTS, BOARDDATE, BOARDHIT, BOARDREF, BOARDSTEP, BOARDEPTH)
   		VALUES
-  		(#{boardWriter}, #{boardTitle}, #{boardContents}, now(), 0)
+  		(#{boardWriter}, #{boardTitle}, #{boardContents}, now(), 0, 0, 0, 0)
   	</insert>
   	
   	<insert id="addFile" parameterType="FileVO">
   		INSERT INTO NOTICEFILES
   		VALUES (null, #{boardNum}, #{fileName}, #{oriName})
   	</insert>
-  	
-  	<select id="getFileDetail" parameterType="FileVO" resultType="FileVO">
-  		SELECT * FROM NOTICEFILES WHERE FILENUM=#{fileNum}
-  	</select>
   	
   </mapper>

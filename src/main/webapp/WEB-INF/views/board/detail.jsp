@@ -54,7 +54,7 @@
 						<h3>${vo.boardContents}</h3>
 						<div>
 							<c:forEach items="${vo.fileVOs}" var="file">
-								<a href="/files/${board}/${file.fileName}">${file.oriName}</a>
+								<a href="/${board}/fileDown?fileNum=${file.fileNum}">${file.oriName}</a>
 							</c:forEach>
 						</div>
 						
