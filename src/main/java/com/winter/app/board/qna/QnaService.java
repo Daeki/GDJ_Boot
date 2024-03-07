@@ -38,6 +38,8 @@ public class QnaService implements BoardService {
 	@Override
 	public int add(BoardVO boardVO, MultipartFile [] attach) throws Exception {
 		int result = qnaDAO.add(boardVO);
+		//ref를 업데이트
+		result = qnaDAO.refUpdate(boardVO);
 		
 		for(MultipartFile multipartFile:attach) {
 			if(multipartFile.isEmpty()) {

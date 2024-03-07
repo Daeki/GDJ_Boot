@@ -58,11 +58,18 @@
   	</resultMap>
   	
   	<insert id="add" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boardNum">
+  		<selectKey keyProperty="boardNum">
+  			SELECT seq.nextval FROM DUAL
+  		</selectKey>
   		INSERT INTO NOTICE 
   		(BOARDWRITER, BOARDTITLE, BOARDCONTENTS, BOARDDATE, BOARDHIT, BOARDREF, BOARDSTEP, BOARDEPTH)
   		VALUES
   		(#{boardWriter}, #{boardTitle}, #{boardContents}, now(), 0, 0, 0, 0)
   	</insert>
+  	
+  	<update id="refUpdate" parameterType="BoardVO">
+  		UPDATE QNA SET BOARDREF=#{boardNum} WHERE BOARDNUM=#{boardNum}
+  	</update>
   	
   	<insert id="addFile" parameterType="FileVO">
   		INSERT INTO NOTICEFILES
