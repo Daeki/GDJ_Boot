@@ -62,6 +62,11 @@ public class QnaService implements BoardService {
 		return qnaDAO.getDetail(boardVO);
 	}
 	
+	@Override
+	public FileVO getFileDetail(FileVO fileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
