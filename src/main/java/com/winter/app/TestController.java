@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.winter.app.transfer.Bus;
-import com.winter.app.transfer.Subway;
 
 import lombok.extern.slf4j.Slf4j;
 
