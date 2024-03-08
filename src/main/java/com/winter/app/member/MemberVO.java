@@ -22,7 +22,7 @@ public class MemberVO {
 	
 	private String passwordCheck;
 	
-	@Pattern(regexp = "")
+	
 	private String phone;
 	@Email
 	private String email;
