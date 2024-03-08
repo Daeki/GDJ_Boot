@@ -19,6 +19,9 @@ public class MemberVO {
 	@NotBlank
 	@Size(min=8, max = 16)
 	private String password;
+	
+	private String passwordCheck;
+	
 	@Pattern(regexp = "")
 	private String phone;
 	@Email

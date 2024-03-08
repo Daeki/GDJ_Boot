@@ -51,33 +51,90 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                    	<form:form modelAttribute="memberVO" method="post" >
-                    		<!-- ID -->
-                    		<form:input path="username"/>
-                    		<form:errors path="username"></form:errors>
-                    		
-                    		<!-- Password -->
-                    		<form:password path="password"/>
-                    		<form:errors path="password"></form:errors>
-                    		
-                    		<!-- Password 검증 -->
-                    		<%-- <form:password path="password2"/> --%>
-                    		
-                    		<!-- 전화번호 -->
-                    		<form:input path="phone"/>
-                    		
-                    		<!-- 이메일 -->
-                    		<form:input path="email"/>
-                    		
-                    		<!-- 주소 -->
-                    		<form:input path="address"/>
-                    		
-                    		<!-- 이름 -->
-                    		<form:input path="name"/>
-                    	
-                    		<!-- 버튼 -->
-                    		<form:button>가입</form:button>
-                    	</form:form>
+
+						<div class="container">
+						
+						        <!-- Outer Row -->
+						        <div class="row justify-content-center">
+						
+						            <div class="col-xl-10 col-lg-12 col-md-9">
+						
+						                <div class="card o-hidden border-0 shadow-lg my-5">
+						                    <div class="card-body p-0">
+						                        <!-- Nested Row within Card Body -->
+						                        <div class="row">
+						                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+						                            <div class="col-lg-6">
+						                                <div class="p-5">
+						                                    <div class="text-center">
+						                                        <h1 class="h4 text-gray-900 mb-4">Member Join!</h1>
+						                                    </div>
+						                                    <form:form cssClass="user" modelAttribute="memberVO">
+						                                        <div class="form-group">
+						                                            <form:input path="username"  cssClass="form-control form-control-user"
+						                                                id="username"></form:input>
+						                                             <form:errors path="username"></form:errors>   
+						                                        </div>
+						                                        <div class="form-group">
+						                                            <form:password path="password" cssClass="form-control form-control-user"
+						                                                id="password" ></form:password>
+						                                            <form:errors path="password"></form:errors>    
+																	
+						                                        </div>
+						                                        <div class="form-group">
+						                                            <form:password path="passwordCheck" cssClass="form-control form-control-user"
+						                                                id="passwordCheck" ></form:password>
+						                                            <form:errors path="passwordCheck"></form:errors>
+																	
+						                                        </div>
+
+						                                        <div class="form-group">
+						                                            <form:input path="phone" cssClass="form-control form-control-user"
+						                                                id="phone" ></form:input>
+						                                            <form:errors path="phone"></form:errors>
+																	
+						                                        </div>
+																<div class="form-group">
+						                                            <form:input path="email" cssClass="form-control form-control-user"
+						                                                id="email" ></form:input>
+						                                            <form:errors path="email"></form:errors>    
+						                                        </div>
+																<div class="form-group">
+						                                            <form:input path="address" cssClass="form-control form-control-user"
+						                                                id="address" ></form:input>
+						                                            <form:errors path="address"></form:errors>
+																	
+						                                        </div>						
+																<div class="form-group">
+						                                            <form:input path="name" cssClass="form-control form-control-user"
+						                                                id="name" ></form:input>
+						                                            <form:errors path="name"></form:errors>    
+																	
+						                                        </div>										
+
+																<button class="btn btn-primary btn-user btn-block">Join</button>
+
+						                           
+						                                        <hr>
+						                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+						                                            <i class="fab fa-google fa-fw"></i> Login with Google
+						                                        </a>
+						                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+						                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+						                                        </a>
+						                                    </form:form>
+						                      
+						                                </div>
+						                            </div>
+						                        </div>
+						                    </div>
+						                </div>
+						
+						            </div>
+						
+						        </div>
+						
+						    </div>
                     
 		
                     </div>
