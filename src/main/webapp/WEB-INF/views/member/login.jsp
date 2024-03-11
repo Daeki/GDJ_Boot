@@ -67,7 +67,7 @@
 						                            <div class="col-lg-6">
 						                                <div class="p-5">
 						                                    <div class="text-center">
-						                                        <h1 class="h4 text-gray-900 mb-4">Member Join!</h1>
+						                                        <h1 class="h4 text-gray-900 mb-4">Member Login!</h1>
 						                                    </div>
 						                                    <form:form cssClass="user" modelAttribute="memberVO">
 						                                        <div class="form-group">
@@ -81,37 +81,7 @@
 						                                            <form:errors path="password"></form:errors>    
 																	
 						                                        </div>
-						                                        <div class="form-group">
-						                                            <form:password path="passwordCheck" cssClass="form-control form-control-user"
-						                                                id="passwordCheck" ></form:password>
-						                                            <form:errors path="passwordCheck"></form:errors>
-																	
-						                                        </div>
-
-						                                        <div class="form-group">
-						                                            <form:input path="phone" cssClass="form-control form-control-user"
-						                                                id="phone" ></form:input>
-						                                            <form:errors path="phone"></form:errors>
-																	
-						                                        </div>
-																<div class="form-group">
-						                                            <form:input path="email" cssClass="form-control form-control-user"
-						                                                id="email" ></form:input>
-						                                            <form:errors path="email"></form:errors>    
-						                                        </div>
-																<div class="form-group">
-						                                            <form:input path="address" cssClass="form-control form-control-user"
-						                                                id="address" ></form:input>
-						                                            <form:errors path="address"></form:errors>
-																	
-						                                        </div>						
-																<div class="form-group">
-						                                            <form:input path="name" cssClass="form-control form-control-user"
-						                                                id="name" ></form:input>
-						                                            <form:errors path="name"></form:errors>    
-																	
-						                                        </div>										
-
+						                                        
 																<button class="btn btn-primary btn-user btn-block">Join</button>
 
 						                           
@@ -160,6 +130,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    
 
 	<c:import url="../temp/script.jsp"></c:import>
 
