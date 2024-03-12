@@ -31,10 +31,24 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@GetMapping("login")
-	public String login(@ModelAttribute MemberVO memberVO)throws Exception{
-		memberVO.setUsername("winter");
-		memberVO.setPassword("123456");
-		return "member/login";
+	public String login(@ModelAttribute MemberVO memberVO, HttpSession session)throws Exception{
+		
+		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
+		
+		if(obj == null) {
+			return "member/login";
+		}
+		
+		SecurityContextImpl contextImpl = (SecurityContextImpl)obj;
+		String user = contextImpl.getAuthentication().getPrincipal().toString();
+		
+		if(user.equals("anonymousUser")) {
+			return "member/login";
+		}
+		
+		
+		
+		return "redirect:/";
 		
 	}
 	
