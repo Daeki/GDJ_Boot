@@ -99,6 +99,7 @@
                           </nav>
 
                           <div>
+                          
                             <a href="add" class="btn btn-primary">글쓰기</a>
                           </div>
                     </div>

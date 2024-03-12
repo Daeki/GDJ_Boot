@@ -8,14 +8,39 @@
   		WHERE USERNAME=#{username}
   	</update>
   	
-  	<select id="getDetail" parameterType="MemberVO" resultType="MemberVO">
-  		SELECT * FROM MEMBER
+  	<select id="getDetail" parameterType="MemberVO" resultMap="getDetailResult">
+  		SELECT * 
+  		FROM MEMBER M
+  			 INNER JOIN
+  			 MEMBERROLE MR
+  			 USING(USERNAME)
+  			 INNER JOIN
+  			 ROLE R
+  			 USING(ROLENUM)	
   		WHERE USERNAME=#{username}
   	</select>
+  	
+  	<resultMap type="MemberVO" id="getDetailResult">
+  		<id column="USERNAME" property="username"/>
+  		<result column="PASSWORD" property="password"/>
+  		<result column="PHONE" property="phone"/>
+  		<result column="EMAIL" property="email"/>
+  		<result column="NAME" property="name"/>
+  		<result column="ADDRESS" property="address"/>
+  		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+  			<result column="ROLENAME" property="roleName"/>
+  		</collection>
+  	
+  	</resultMap>
   	
   	<insert id="add" parameterType="MemberVO">
   		INSERT INTO MEMBER 
   		VALUES(#{username}, #{password}, #{phone}, #{email}, #{address}, #{name})
+  	</insert>
+  	
+  	<insert id="addMemberRole" parameterType="MemberVO">
+  		INSERT INTO MEMBERROLE (USERNAME, ROLENUM)
+  		VALUES (#{username}, 3)
   	</insert>
   	
   </mapper>

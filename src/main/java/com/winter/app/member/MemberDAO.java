@@ -9,6 +9,8 @@ public interface MemberDAO { //MemberMapper
 	
 	public int add(MemberVO memberVO)throws Exception;
 	
+	public int addMemberRole(MemberVO memberVO)throws Exception;
+	
 	public int update(MemberVO memberVO)throws Exception;
 
 }

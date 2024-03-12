@@ -76,7 +76,7 @@
 						                                             <form:errors path="username"></form:errors>   
 						                                        </div>
 						                                        <div class="form-group">
-						                                            <form:password path="password" cssClass="form-control form-control-user"
+						                                            <form:password path="password" value="123456" cssClass="form-control form-control-user"
 						                                                id="password" ></form:password>
 						                                            <form:errors path="password"></form:errors>    
 																	

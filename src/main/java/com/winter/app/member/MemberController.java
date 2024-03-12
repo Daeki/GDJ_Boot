@@ -1,6 +1,11 @@
 package com.winter.app.member;
 
+import java.util.Enumeration;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,9 +32,38 @@ public class MemberController {
 	
 	@GetMapping("login")
 	public String login(@ModelAttribute MemberVO memberVO)throws Exception{
+		memberVO.setUsername("winter");
+		memberVO.setPassword("123456");
 		return "member/login";
 		
 	}
+	
+	@GetMapping("page")
+	public void page(HttpSession session)throws Exception{
+		
+		//Attribut Name???
+		Enumeration<String> en = session.getAttributeNames();
+		
+		while(en.hasMoreElements()) {
+			log.info("=== attribute {}", en.nextElement());
+		}
+		
+		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
+		log.info("=== obj {}", obj);
+		
+		SecurityContextImpl contextImpl = (SecurityContextImpl)obj;
+		String name  = contextImpl.getAuthentication().getName();
+		MemberVO memberVO = (MemberVO)contextImpl.getAuthentication().getPrincipal();
+		
+		log.info("=== Name {}", name);
+		log.info("=== MemberVO {}", memberVO);
+		
+		SecurityContext context = SecurityContextHolder.getContext();
+		context.getAuthentication();
+		//DB 조회
+		
+	}
+	
 	
 	@GetMapping("update")
 	public void update(Model model)throws Exception{
@@ -62,6 +96,7 @@ public class MemberController {
 //			return "member/add";
 //		}
 		
+				
 		int result = memberService.add(memberVO);
 		model.addAttribute("result", "member.add.result");
 		model.addAttribute("path", "/");
