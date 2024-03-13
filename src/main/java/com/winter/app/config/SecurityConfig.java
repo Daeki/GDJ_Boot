@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.winter.app.member.MemberService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -20,6 +22,9 @@ public class SecurityConfig {
 	
 	@Autowired
 	private SecurityLoginFailHandler failHandler;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
@@ -76,7 +81,26 @@ public class SecurityConfig {
 							.logoutSuccessUrl("/")
 							.invalidateHttpSession(true) //로그아웃시 seession만료
 							.permitAll()
-			)
+			)//logout 끝부분
+			.rememberMe(
+					(rememberMe)->
+						rememberMe
+							.rememberMeParameter("rememberMe")
+							.tokenValiditySeconds(600)
+							.key("rememberMe")
+							.userDetailsService(memberService)
+							.authenticationSuccessHandler(handler)
+							.useSecureCookie(false)
+			)//rememberMe 끝 부분
+			.sessionManagement(
+					(sessionManagement)->
+						sessionManagement
+							.maximumSessions(1)
+							.maxSessionsPreventsLogin(false)
+							.expiredUrl("/expired")
+							
+			)//sessionManagement 끝
+			
 			
 			;	
 	
@@ -91,10 +115,6 @@ public class SecurityConfig {
 		
 	}
 	
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		//password 암호화 해주는 객체
-		return new BCryptPasswordEncoder();
-	}
+
 
 }

@@ -51,7 +51,7 @@
                     <!-- Content Row -->
                     <div class="row justify-content-md-center">
                     	<div class="col-md-6">
-                    	<form action="" method="post" enctype="multipart/form-data">
+                    	<form action="http://192.168.1.80/notice/add" method="post" enctype="multipart/form-data">
                     		<div class="mb-3">
 							  <label for="title" class="form-label">제목</label>
 							  <input type="text" class="form-control" id="title" name="boardTitle">

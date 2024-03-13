@@ -76,7 +76,7 @@
 						                                    </div>
 						                                    <form:form cssClass="user" modelAttribute="memberVO">
 						                                        <div class="form-group">
-						                                            <form:input path="username"  cssClass="form-control form-control-user"
+						                                            <form:input path="username" value="${cookie.rememberId.value}"  cssClass="form-control form-control-user"
 						                                                id="username"></form:input>
 						                                             <form:errors path="username"></form:errors>   
 						                                        </div>
@@ -86,6 +86,17 @@
 						                                            <form:errors path="password"></form:errors>    
 																	
 						                                        </div>
+						                                        
+																<div class="mb-3 form-check">
+																	<input type="checkbox" name="rememberMe" class="form-check-input" id="remember-me">
+																	<label class="form-check-label" for="remember-me">remember-me</label>
+
+																</div>
+																
+																<div class="mb-3 form-check">
+																	<input type="checkbox" checked name="rememberId" class="form-check-input" id="remember-id">
+																	<label class="form-check-label" for="remember-me">ID 기억하기</label>
+																</div>
 						                                        
 																<button class="btn btn-primary btn-user btn-block">Join</button>
 
