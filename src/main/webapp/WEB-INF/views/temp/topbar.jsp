@@ -64,6 +64,12 @@
 								<i class="fas fa-user-lock"></i>
 							</a>
 						</li>
+
+                        <li class="nav-item mx-1">
+							<a class="nav-link" href="/oauth2/authorization/kakao">
+								KakaoLogin
+							</a>
+						</li>
 					</sec:authorize>
 <!-- 로그인 전 보이는 구간 마지막 -->                        
                         
