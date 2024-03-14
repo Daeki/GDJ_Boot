@@ -66,7 +66,7 @@
 						</li>
 
                         <li class="nav-item mx-1">
-							<a class="nav-link" href="/oauth2/authorization/kakao">
+							<a class="nav-link" href="/oauth2/authorization/kakao?prompt=login">
 								KakaoLogin
 							</a>
 						</li>
