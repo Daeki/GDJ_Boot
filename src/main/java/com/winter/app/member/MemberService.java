@@ -53,6 +53,7 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 			user = this.kakao(user);
 		}
 		
+		((MemberVO)user).setSocial(c.getClientName());
 		return user;
 	}
 	
@@ -62,6 +63,7 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 		memberVO.setUsername(oAuth2User.getName());
 		memberVO.setName(map.get("nickname").toString());
 		memberVO.setAttributes(oAuth2User.getAttributes());
+		
 		
 		List<RoleVO> list = new ArrayList<>();
 		RoleVO roleVO = new RoleVO();
