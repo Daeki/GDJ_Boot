@@ -55,7 +55,7 @@ public class SecurityLogoutSuccessHandler implements LogoutSuccessHandler {
 			
 			log.info("Kakao Logout {}", result.block());
 			
-					
+			response.sendRedirect("/");
 			
 		}
 		
